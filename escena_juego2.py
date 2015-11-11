@@ -16,45 +16,54 @@ class EscenaJuego2(pilasengine.escenas.Escena):
         self.cantidad_de_bombas = 4
         self.cantidad_de_bananas = 20
         self.bananas_comidas = []
-
+        #Creo el actor principal Mono, asigno escala, radio de colision y ubicacion
         self.mono = self.pilas.actores.Mono()
         self.mono.escala = 0.5
         self.mono.x = 280
         self.mono.y = 0
         self.mono.radio_de_colision = 30
+        #Habilidades del mono
         self.mono.aprender(self.pilas.habilidades.Arrastrable)
         self.mono.aprender(self.pilas.habilidades.LimitadoABordesDePantalla)
+        #Creo el actor puntaje
         self.puntos = self.pilas.actores.Puntaje(x=230, y=200,
                                                     color=self.pilas.colores.rojo)
 
         self.puntos.magnitud = 40
-        #self.puntos.definir(cantidad_puntos)
         self.pilas.actores.Sonido()
+        #Agrego 1 banana cada 1 segundo y hasta llegar a ser 20
         self.pilas.tareas.agregar(1, self._crear_banana)
-        #Agrego 1 bomba cada 1 segundo y hasta llegar a ser 4
+        #Agrego 1 bomba cada 0.3 segundo y hasta llegar a ser 4
         self.pilas.tareas.agregar(0.3, self._crear_bomba)
         #Agrego colisiones
         self.pilas.colisiones.agregar(self.mono, self.bananas, self.comer_banana)
         self.pilas.colisiones.agregar(self.mono, self.bombas, self.hacer_explotar_una_bomba)
 
-        self.fin_de_juego = False
     '''Crea bananas enemigas de manera random, limitando la cantidad para que el mono
     no pueda comer bananas sin moverse.'''
     def _crear_banana(self):
         for i in range(self.cantidad_de_bananas):
+            #Creo actor banana
             banana = self.pilas.actores.Banana()
+            #Asigno escala y radio de colision
             banana.escala = 1
             banana.radio_de_colision = 20
+            #Asigno ubicacion random
             banana.x = random.randrange(-250, +220)
             banana.y = random.randrange(-220, +200)
+            #Agrego banana enemiga a la lista
             self.bananas.append(banana)
     '''Crea las bombas enemigas de manera random'''
     def _crear_bomba(self):
         for i in range(self.cantidad_de_bombas):
+            #Creo el actor bomba
             bomba = self.pilas.actores.Bomba()
+            #Asigno escala y radio de colision
             bomba.escala = 0.8
             bomba.radio_de_colision = 18
+            #Habilidad
             bomba.aprender("PuedeExplotar")
+            #Asigno ubicacion random
             x = random.randrange(-250, 240)
             y = random.randrange(-240, 240)
 
@@ -68,9 +77,10 @@ class EscenaJuego2(pilasengine.escenas.Escena):
             elif y <= 0 and y >= -100:
                 y = -70
 
-
-            bomba.x = [x, y]*100,2
+            #Asigno movimiento a las bombas
+            bomba.x = [x, y]*100,2.5
             bomba.y = [y, x]*100,2.5
+            #Agrego bomba enemiga a la lista
             self.bombas.append(bomba)
 
 

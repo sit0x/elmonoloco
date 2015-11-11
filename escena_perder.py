@@ -6,10 +6,11 @@ import random
 class EscenaPerder(pilasengine.escenas.Escena):
     def iniciar(self, puntaje, nivel):
         self.pilas.fondos.Fondo('data/monolosepng.png')
-
+        #Texto informativo al usuario
         mensaje = "PERDISTE! Hiciste {} puntos.".format(puntaje)
         self.texto = self.pilas.actores.Texto(mensaje)
         self.nivel = nivel
+        #Boton para volver a intentarlo
         boton = self.pilas.interfaz.Boton("Volver a intentarlo")
         boton.y = 200
         boton.x = 250

@@ -116,14 +116,14 @@ class EscenaJuego(pilasengine.escenas.Escena):
         if self.puntos.obtener() == 20:
             self.pilas.escenas.EscenaGanar(self.puntos.obtener())
 
-
+    '''Cada vez que el mono toque la bomba, explota y pierde'''
     def hacer_explotar_una_bomba(self,mono, bomba):
         bomba.explotar()
         self.mono.gritar()
         self.mono.eliminar()
         self.pilas.tareas.eliminar_todas()
         self.pilas.escenas.EscenaPerder(self.puntos.obtener(), '1')
-
+    '''Aplico animacion al texto'''
     def _aplicar_animacion(self, texto):
         texto.y = -500
         texto.escala = 4

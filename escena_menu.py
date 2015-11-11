@@ -9,7 +9,7 @@ class EscenaMenu(pilasengine.escenas.Escena):
         self._aplicar_animacion(texto)
 
         self.pilas.fondos.Fondo('data/monointro.png')
-
+        #Creo botones del Menu
         boton = self.pilas.interfaz.Boton("Comenzar Juego")
         boton.x = -70
         boton.y = -150
@@ -28,26 +28,16 @@ class EscenaMenu(pilasengine.escenas.Escena):
         boton3.y = -150
         boton3.conectar(self._volver)
         self.pilas.actores.Sonido()
-        #self.crear_texto_ayuda()
-    #def crear_texto_ayuda(self):
-        #titulo = self.pilas.actores.Texto(u"pulsa ESC para volver")
-        #titulo.y = 250
-        #self.pilas.avisar("pulsa ESC para volver a Ayuda")
-
-        #self.pilas.eventos.click_de_mouse.conectar(self._volver)
-        #self.pilas.eventos.pulsa_tecla_escape.conectar(self._volver)
-
-
-
+    #Comienza el Nivel 1
     def _arrancar_Nivel_1(self):
         self.pilas.escenas.EscenaJuego()
-
+    #Comienza el Nivel 2
     def _arrancar_Nivel_2(self):
         self.pilas.escenas.EscenaJuego2()
-
+    #Vuelve hacia atras
     def _volver(self):
         self.pilas.escenas.EscenaAyuda()
-
+    #Animacion del texto
     def _aplicar_animacion(self, texto):
         texto.y = -450
         texto.escala = 6
