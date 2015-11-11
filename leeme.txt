@@ -1,0 +1,12 @@
+En Mono Loco:
+
+Tenes que poder lograr comer 20 bananas
+sin tocar las bombas o que ellas te toquen.
+Para poder ayudar al mono a comer BANANAS,
+tenes que deslizar al MONO por la pantalla.
+
+Como? Haces click y  mantenes presionado
+mientras lo arrastras!
+
+Tene en cuenta que el mono crece
+al comer las bananas!
